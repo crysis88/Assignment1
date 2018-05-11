@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.Employee">
+    <select id="selectEmployee" resultType="com.assignment.model.Employee">
+        select emp_id as id,emp_name as name,emp_designation as designation from Employee where emp_id = #{id}
+    </select>
+    <select id="selectAllEmployee" resultType="com.assignment.model.Employee">
+        select emp_id as id,emp_name as name,emp_designation as designation from Employee
+    </select>
+    <insert id="insertEmployee" statementType="PREPARED" flushCache="true">
+        INSERT INTO EMPLOYEE (emp_id,emp_name,emp_designation) VALUES (#{id},#{name},#{designation})
+    </insert>
+    <update id="updateEmployee" statementType="PREPARED" flushCache="true"
+            parameterType="com.assignment.model.Employee">
+        UPDATE  EMPLOYEE SET emp_name = #{name},emp_designation = #{designation} WHERE emp_id = #{id}
+    </update>
+    <delete id="deleteEmployee" statementType="PREPARED" flushCache="true">
+      DELETE FROM EMPLOYEE WHERE emp_id= #{id}
+    </delete>
+</mapper>
